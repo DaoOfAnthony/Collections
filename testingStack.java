@@ -1,19 +1,19 @@
 
 /**
- * Write a description of class Collections here.
+ * Write a description of class testingStack here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Collections
+public class testingStack
 {
     // instance variables - replace the example below with your own
     private int x;
 
     /**
-     * Constructor for objects of class Collections
+     * Constructor for objects of class testingStack
      */
-    public Collections()
+    public testingStack()
     {
         // initialise instance variables
         x = 0;
