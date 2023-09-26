@@ -7,27 +7,20 @@
  */
 public class testingStack
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class testingStack
-     */
-    public testingStack()
+    public static void test()
     {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+        MyStack<Integer> stack = new MyStack();
+        
+        System.out.println(stack.isEmpty()); 
+        
+        stack.push(5);
+        stack.push(300);
+        stack.push(200);
+        stack.push(5);
+        stack.push(5);
+        
+        System.out.println(stack.isFull()); 
+        
+        System.out.println(stack.toString());
     }
 }

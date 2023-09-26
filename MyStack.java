@@ -1,19 +1,18 @@
 import java.io.*;
 import java.util.*;
-import java.util.array;
 
-public class MyStack
-{
-    // instance variables - replace the example below with your own
-    private int stackData[];
+public class MyStack<E> {
+    // instance variables
+    private E stackData[];
     private int size; 
-
+    
+    
     public MyStack() {
-        this.stackData = new int[10]; 
+        stackData = (E[]) new Object[5];
         size = 0;
     }
     
-    public void push(int element) {
+    public void push(E element) {
         stackData[size] = element;
         size++;
     }
@@ -27,20 +26,16 @@ public class MyStack
         
     }
     
-    public int pop() {
-        if (size > 0) {
-            return stackData[size-1];
+    public E pop() {
+        if (!isEmpty()) {
             size--;
-            stackData[size-1] = size;
-            
-            
+            return stackData[size];
         } else {
-            return 0;
-            System.out.println("does not exist"); 
+            return stackData[-1];
         }
     }
     
-    public int top() {
+    public E top() {
         return stackData[size];
     }
     
@@ -48,8 +43,7 @@ public class MyStack
         return size;
     }
     
-    public boolean isFull()
-    {
+    public boolean isFull() {
         if (size == stackData.length) {
             return true;
         } else {
@@ -57,11 +51,14 @@ public class MyStack
         }
     }
     
-    public String toString()
-    {
-        return System.out.println(Arrays.toString(stackData));
+    public String toString() {
+        String result = "";
+
+        for (int i = 0; i < size; i++) {
+            result = result + stackData[i].toString() + " ";
+        }
+    
+        return result;
     }
-    
-    
 }
 
