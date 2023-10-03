@@ -9,7 +9,7 @@ public class testingStack
 {
     public static void test()
     {
-        MyStack<Integer> stack = new MyStack();
+        MyStackLL<Integer> stack = new MyStackLL();
         
         System.out.println(stack.isEmpty()); 
         

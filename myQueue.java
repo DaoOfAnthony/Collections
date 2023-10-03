@@ -2,25 +2,24 @@ class myQueue<E> {
       
     private int front;
     private int back;
-    private int capacity;
-    private int queue[];   
+    private int size;
+    private E queue[];   
      
     myQueue(int size) {   
         front = 0;
         back = 0;   
-        capacity = size;   
+        this.size = size;   
         queue = (E[]) new Object[5];   
     }   
      
     // insert an element into the queue  
-    public void enqueue(int element)  {   
+    public void enqueue(E element)  {   
         // check if the queue is full  
-        if (capacity == back) {   
+        if (size == back) {   
             System.out.printf("Queue is full");   
             return;   
         }   
-     
-        // insert element at the back   
+       
         else {   
             queue[back] = element;   
             back++;   
@@ -29,39 +28,51 @@ class myQueue<E> {
     }   
      
     //remove an element from the queue  
-    public void dequeue()  {   
-         
-        if (front == back) {   
-            System.out.printf("Queue is empty");   
-            return;   
-        }   
-     
-        // shift elements to the right by one place uptil back   
-        else {   
-            for (int i = 0; i < back - 1; i++) {   
-                queue[i] = queue[i + 1];   
-            }   
-        }
-            
-        if (back < capacity) {   
-                queue[back] = 0;   
-     
-            // decrement back   
-            back--;   
-        }   
+    public int dequeue()  {   
+       
+        if (front == back) {
+            System.out.printf("Queue is empty");
+            return -1;
+        } else {
+            for (int i = 0; i < back - 1; i++) {
+                queue[i] = queue[i + 1];
+            }
+            return queue[i];
+        } 
         
-        return;   
-    }      
-     
+    }
+    
+    public boolean isEmpty()
+    {
+          if (size == 0) {
+           return true; 
+        } else {
+            return false;
+        }
+    }
+    
+    public int size() {
+        return size;
+    }
+    
+    public boolean isFull() {
+        if (size == queue.length) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     // print front of queue   
-    public void front()   
+    public int front()   
     {   
         if (front == back) {   
-            System.out.printf("Queue is Empty\n");   
-            return;   
-        }   
-        System.out.printf("\nFront Element of the queue: %d", queue[front]);   
-        return;   
+            System.out.printf("Queue is Empty");   
+            return -1;   
+        }   else {
+            System.out.printf("Front of the queue: is ");   
+            return queue[front];   
+        }
     }   
 }   
    
