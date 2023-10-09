@@ -1,33 +1,76 @@
 
-/**
- * Write a description of class myQueueLL here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class myQueueLL
-{
-    // instance variables - replace the example below with your own
-    private int x;
+import java.util.NoSuchElementException;
 
-    /**
-     * Constructor for objects of class myQueueLL
-     */
-    public myQueueLL()
-    {
-        // initialise instance variables
-        x = 0;
+class myQueueLL<E> {   
+      
+    MyLinkedList<E> queue;  
+     
+    myQueueLL() {     
+        queue = new MyLinkedList<E>();
+    }   
+     
+    // insert an element into the queue  
+    public void enqueue(E element)  {   
+        // check if the queue is full  
+        if (queue.size() == 0) {   
+            throw new NoSuchElementException();  
+        }   
+       
+        else {     
+            queue.addTail(element);   
+        }   
+        return;   
+    }   
+     
+    //remove an element from the queue  
+    public E dequeue()  {   
+       
+        if (isEmpty()) {
+            throw new NoSuchElementException();  
+        } else {
+            E temp = queue.head.getData();
+            queue.removeHead();
+            return temp;
+        } 
+        
     }
+    
+    public boolean isEmpty()
+    {
+          if (queue.size == 0) {
+           return true; 
+        } else {
+            return false;
+        }
+    }
+    
+    public int size() {
+        return queue.size();
+    }
+    
+    public boolean isFull() {
+        return false;
+    }
+    
+    // print front of queue   
+    public E front()   
+    {   
+        if (queue.size() == 0) {   
+            throw new NoSuchElementException();    
+        }   else { 
+            return queue.head.getData();   
+        }
+    } 
+    
+    public String toString() {
+        Node curNode = queue.head; 
+        String result = "";
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+        for (int i = 0; i < queue.size(); i++) {
+            result = result + curNode.getData() + " ";
+            curNode = curNode.getNext();
+        }
+    
+        return result;
     }
-}
+}   

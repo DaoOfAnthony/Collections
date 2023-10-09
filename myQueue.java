@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 class myQueue<E> {   
       
     private int front;
@@ -5,10 +7,10 @@ class myQueue<E> {
     private int size;
     private E queue[];   
      
-    myQueue(int size) {   
+    myQueue() {   
         front = 0;
         back = 0;   
-        this.size = size;   
+        size = 0;
         queue = (E[]) new Object[5];   
     }   
      
@@ -28,11 +30,10 @@ class myQueue<E> {
     }   
      
     //remove an element from the queue  
-    public int dequeue()  {   
+    public E dequeue()  {   
        
-        if (front == back) {
-            System.out.printf("Queue is empty");
-            return -1;
+        if (isEmpty()) {
+            throw new NoSuchElementException();  
         } else {
             for (int i = 0; i < back - 1; i++) {
                 queue[i] = queue[i + 1];
@@ -64,16 +65,24 @@ class myQueue<E> {
     }
     
     // print front of queue   
-    public int front()   
+    public E front()   
     {   
-        if (front == back) {   
-            System.out.printf("Queue is Empty");   
-            return -1;   
-        }   else {
-            System.out.printf("Front of the queue: is ");   
+        if (size == 0) {   
+            throw new NoSuchElementException();    
+        }   else { 
             return queue[front];   
         }
-    }   
+    } 
+    
+    public String toString() {
+        String result = "";
+
+        for (int i = 0; i < size; i++) {
+            result = result + queue[i].toString() + " ";
+        }
+    
+        return result;
+    }
 }   
    
 

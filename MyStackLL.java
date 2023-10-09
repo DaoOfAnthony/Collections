@@ -48,7 +48,7 @@ public class MyStackLL<E> {
         Node curNode = stackData.head; 
         String result = "";
 
-        for (int i = 0; i < stackData.size; i++) {
+        for (int i = 0; i < stackData.size(); i++) {
             result = result + curNode.getData() + " ";
             curNode = curNode.getNext();
         }
