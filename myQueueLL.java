@@ -16,39 +16,26 @@ public class myQueueLL<E> {
         queue = new MyLinkedList<E>();
     }   
      
-    // insert an element into the queue  
+    /**
+     * Add element to back of queue
+     */  
     public void enqueue(E element)  {   
-        // check if the queue is full  
-        if (queue.size() == 0) {   
-            throw new NoSuchElementException();  
-        }   
-       
-        else {     
-            queue.addTail(element);   
-        }   
-        return;   
+        queue.addTail(element); 
     }   
      
-    //remove an element from the queue  
+    //remove an element from front of queue  
     public E dequeue()  {   
-       
-        if (isEmpty()) {
-            throw new NoSuchElementException();  
-        } else {
-            E temp = queue.head.getData();
-            queue.removeHead();
-            return temp;
+        E temp = queue.getHead();
+    
+        queue.removeHead();
+        return temp;
         } 
         
     }
     
     public boolean isEmpty()
     {
-          if (queue.size == 0) {
-           return true; 
-        } else {
-            return false;
-        }
+        return queue.isEmpty();
     }
     
     public int size() {
