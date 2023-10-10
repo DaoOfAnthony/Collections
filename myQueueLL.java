@@ -17,7 +17,7 @@ public class myQueueLL<E> {
     }   
      
     /**
-     * Add element to back of queue
+     * Add element to the back of the queue
      */  
     public void enqueue(E element)  {   
         queue.addTail(element); 
@@ -32,37 +32,43 @@ public class myQueueLL<E> {
         } 
         
     }
-    
+
+    /*
+     * shows if the queue is empty or not
+     * 
+     * @return true if empty 
+     */
     public boolean isEmpty()
     {
         return queue.isEmpty();
     }
-    
+
+    /*
+     * returns the number of elements in the queue
+     * 
+     * @return  size of queue
+     */
     public int size() {
         return queue.size();
     }
     
-    public boolean isFull() {
-        return false;
-    }
-    
-    // print front of queue   
+     /*
+     * returns element at front of queue
+     * 
+     * @return  front of queue
+     */
     public E front()   
     {   
-        if (queue.size() == 0) {   
-            throw new NoSuchElementException();    
-        }   else { 
-            return queue.head.getData();   
-        }
+         return queue.getHead();
     } 
-    
-    public String toString() {
-        Node curNode = queue.head; 
-        String result = "";
 
-        for (int i = 0; i < queue.size(); i++) {
-            result = result + curNode.getData() + " ";
-            curNode = curNode.getNext();
+    /*
+     * Returns the queue from front to back
+     * 
+     * @return  toString
+     */
+    public String toString() {
+        return queue.toString();
         }
     
         return result;
