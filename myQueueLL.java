@@ -10,7 +10,7 @@ public class myQueueLL<E> {
     MyLinkedList<E> queue;  
 
     /**
-     * Constructor for objects of class MyQueue
+     * Constructor for objects of class MyQueueLL
      */  
     public myQueueLL() {     
         queue = new MyLinkedList<E>();
