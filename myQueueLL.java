@@ -1,11 +1,18 @@
-
+import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 
-class myQueueLL<E> {   
-      
+/*
+*
+* @author Anthony Yang
+*
+*/      
+public class myQueueLL<E> {     
     MyLinkedList<E> queue;  
-     
-    myQueueLL() {     
+
+    /**
+     * Constructor for objects of class MyQueue
+     */  
+    public myQueueLL() {     
         queue = new MyLinkedList<E>();
     }   
      
