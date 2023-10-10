@@ -1,6 +1,11 @@
 import java.io.*;
 import java.util.*;
 
+ /**
+ * Creates a stack structure using LinkedList
+ *
+ * @author Anthony
+ */
 public class MyStackLL<E> {
     // instance variables
     MyLinkedList<E> stackData;  
