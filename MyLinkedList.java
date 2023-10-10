@@ -1,19 +1,13 @@
 import java.util.NoSuchElementException;
 
+ /**
+ * Creates a LinkedList
+ *
+ * @author Anthony
+ */
 public class MyLinkedList<E>
 {
-    /*Linked list - points to the first node
-     * has Node head
-     * 
-     * 2 classes
-     * 
-     * box > box > box - each box/node is a object
-     * 
-     * 2 instance variables - int data/ node next - if no next node, = null
-     * 
-     *
-     */
-    
+    //instance variables
     Node<E> head;
     int size;
     
