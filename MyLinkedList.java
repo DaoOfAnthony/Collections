@@ -10,12 +10,16 @@ public class MyLinkedList<E>
     //instance variables
     Node<E> head;
     int size;
-    
+
+    /**
+     * Constructor for objects of class MyLinkedList
+     */
     public MyLinkedList() {
         head = null;
         size = 0;
     }
-    
+
+    //@param data stored in LinkedList
     public void addHead(E data) {
 
         if(head == null) {  
@@ -28,7 +32,9 @@ public class MyLinkedList<E>
             size++;
         }
     }
-    
+     /**
+     * removes the first element in LinkedList
+     */
     public Node<E> removeHead()
     {
         if (head == null)
@@ -40,7 +46,10 @@ public class MyLinkedList<E>
             return head;  
         }
     }
-    
+ 
+     /**
+     * Adds an element to the back of the linked list
+     */
     public void addTail(E data) {
         if (head == null) {
             addHead(data);
@@ -55,7 +64,12 @@ public class MyLinkedList<E>
             currentNode = newNode;
         }
     }
-    
+ 
+    /**
+     * checks if the LinkedList is empty 
+     * 
+     * @return if LinkedList empty
+     */
     public boolean isEmpty() {
         if (size != 0)
         {
@@ -64,7 +78,12 @@ public class MyLinkedList<E>
             return false;
         }
     }
-    
+
+    /**
+     * returns number of elements in LinkedList
+     * 
+     * @return size of LinkedList
+     */
     public int size() {
       return size;
     }  
@@ -73,11 +92,12 @@ public class MyLinkedList<E>
         Node curNode = head; 
         String result = "";
 
-        while (curNode != null) {
+        while (curNode.getNext != null) {
             result = result + curNode.getData() + " ";
             curNode = curNode.getNext();
         }
-
+        result = result + curNode.getData();
+     
         return result;
     }
     
