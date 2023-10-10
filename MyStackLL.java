@@ -5,7 +5,9 @@ public class MyStackLL<E> {
     // instance variables
     MyLinkedList<E> stackData;  
     
-    
+    /**
+     * Constructor for objects of class MyStackLL
+     */
     public MyStackLL() {
         stackData = new MyLinkedList<E>();
     }
