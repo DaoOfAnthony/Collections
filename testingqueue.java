@@ -13,11 +13,11 @@ public class testingqueue
         
         System.out.println(queue.isEmpty()); 
         
-        queue.dequeue(5);
-        queue.dequeue(300);
-        queue.dequeue(200);
-        queue.dequeue(5);
-        queue.dequeue(5);
+        queue.enqueue(5);
+        queue.enqueue(300);
+        queue.enqueue(200);
+        queue.enqueue(5);
+        queue.enqueue(5);
         
         System.out.println(queue.isFull()); 
         System.out.println(queue.toString());

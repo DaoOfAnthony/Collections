@@ -11,14 +11,7 @@ class myQueueLL<E> {
      
     // insert an element into the queue  
     public void enqueue(E element)  {   
-        // check if the queue is full  
-        if (queue.size() == 0) {   
-            throw new NoSuchElementException();  
-        }   
-       
-        else {     
-            queue.addTail(element);   
-        }   
+        queue.addTail(element);    
         return;   
     }   
      
