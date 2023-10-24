@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
  *
  * @author Anthony
  */
-public class MyLinkedList<E>
+public class MyLinkedList<E extends Comparable<E>>
 {
     //instance variables
     private Node<E> head;
@@ -99,12 +99,93 @@ public class MyLinkedList<E>
       return size;
     }  
     
+    /**
+     * 
+     * 
+     */
     public E get(int index){
-            for (int i = 0; i <= index; i++) {
-                
+        if (index < 0 || index > size()-1) {
+            Node<E> curNode = head;
+            
+            for (int i = 0; i < index; i++) {
+                curNode = curNode.getNext();
             }
+            return curNode.getData();
+            
+        } else {
+            throw new NoSuchElementException();
+        }
     }
     
+    public E remove(int index) {
+        if (index < 0 || index > size()-1) {
+            Node<E> curNode = head;
+            
+            if(index == 0){
+                removeHead();
+            }
+            
+            for (int i = 0; i < index - 1; i++) {
+                curNode = curNode.getNext();
+            }
+            curNode.next = curNode.getNext().getNext();
+            return curNode.getData();
+            size--;
+        } else {
+            throw new NoSuchElementException();
+        }
+    }
+    
+    public void add(int index, E element) {
+        if (index < 0 || index > size() - 1) {
+            throw new NoSuchElementException();
+        } else if (index == 0){
+            addHead(element);
+        } else {
+            Node<E> newNode = new Node(element);
+            Node<E> curNode = head;    
+            for (int i = 0; i < index - 1; i++) {
+                curNode = curNode.getNext();
+            }   
+                
+            curNode.next = newNode; 
+            newNode.next = curNode.getNext().getNext();
+            size++;
+        } 
+    }
+    
+    public void add(E element) {
+        addTail(element);
+    }
+    
+    public void set(int index, E element){
+        if (index < 0 || index > size() - 1) {
+            throw new NoSuchElementException();
+        } else if (index == 0){
+            head.data = element;
+        } else {
+            Node<E> curNode = head;    
+            for (int i = 0; i < index; i++) {
+                curNode = curNode.getNext();
+            }
+                
+            curNode.data = element;
+        } 
+    }
+    
+    public void insertSorted(E element) {
+        Node<E> curNode = head;
+        int count = 0;
+        while(curNode.getData() < element){
+            curNode = curNode.getNext();
+            count++;
+            if (count == size) {
+                curNode.data = element;
+            }
+        }
+                
+        curNode.data = element;
+        } 
     
     public String toString() {
         Node curNode = head; 
