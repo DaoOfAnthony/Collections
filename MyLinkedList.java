@@ -131,7 +131,7 @@ public class MyLinkedList<E extends Comparable<E>>
             Node<E> currNode = head;
             
             size--;
-            for (int i = 0; i<index-1; i++) {
+            for (int i = 0; i < index-1; i++) {
                 currNode = currNode.getNext();
             }
             if (index == size() - 1) {
@@ -146,6 +146,24 @@ public class MyLinkedList<E extends Comparable<E>>
                 return temp.getData();
             }
         }
+    }
+    
+    /**
+     * 
+     * going through the Linkelist finding where data = element
+     */
+    public E remove(E element) {
+        Node<E> currNode = head;
+        int index = 0;
+        
+        while (currNode != null && currNode.getData().compareTo(element) != 0) {
+            currNode = currNode.getNext();
+            index++;
+        }
+        if (currNode == null) {
+            return null;
+        }
+        return remove(index);
     }
     
      /**
