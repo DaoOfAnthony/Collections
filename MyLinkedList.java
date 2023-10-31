@@ -73,6 +73,7 @@ public class MyLinkedList<E extends Comparable<E>>
             }
 
             currentNode = newNode;
+            size++;
         }
     }
  
@@ -163,6 +164,7 @@ public class MyLinkedList<E extends Comparable<E>>
         if (currNode == null) {
             return null;
         }
+        size--;
         return remove(index);
     }
     
@@ -235,7 +237,5 @@ public class MyLinkedList<E extends Comparable<E>>
         contents += currNode.getData();
         
         return contents;
-    }
-    
-    
+    }    
 }
