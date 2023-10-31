@@ -25,4 +25,7 @@ public class Node<E>
         return data;
     }
     
+    public void setNext(Node<E> newNext) {
+        next = newNext;
+    }
 }

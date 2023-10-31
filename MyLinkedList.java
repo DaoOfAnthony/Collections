@@ -46,15 +46,15 @@ public class MyLinkedList<E extends Comparable<E>>
      /**
      * removes the first element in LinkedList
      */
-    public Node<E> removeHead()
+    public E removeHead()
     {
-        if (head == null)
-        {
-            throw new NoSuchElementException();
+          if (head == null) {
+            throw new NoSuchElementException(); // handles error of empty list
         } else {
-            Node<E> replace = head;
-            head = head.next;
-            return head;  
+            E temp = head.getData();
+            head = head.getNext();
+            size--;
+            return temp;
         }
     }
  
@@ -101,7 +101,7 @@ public class MyLinkedList<E extends Comparable<E>>
     
     /**
      * 
-     * 
+     * get node at index
      */
     public E get(int index){
         if (index < 0 || index > size()-1) {
@@ -117,25 +117,41 @@ public class MyLinkedList<E extends Comparable<E>>
         }
     }
     
+    /**
+     * 
+     * get node at index
+     */
     public E remove(int index) {
-        if (index < 0 || index > size()-1) {
-            Node<E> curNode = head;
-            
-            if(index == 0){
-                removeHead();
-            }
-            
-            for (int i = 0; i < index - 1; i++) {
-                curNode = curNode.getNext();
-            }
-            curNode.next = curNode.getNext().getNext();
-            return curNode.getData();
-            size--;
-        } else {
+         if (index > size() - 1 || index < 0) {
             throw new NoSuchElementException();
+        } else if(index == 0) {
+            size--;
+            return removeHead();
+        } else {
+            Node<E> currNode = head;
+            
+            size--;
+            for (int i = 0; i<index-1; i++) {
+                currNode = currNode.getNext();
+            }
+            if (index == size() - 1) {
+                tail = currNode;
+                Node<E> temp = currNode.getNext();
+                currNode.setNext(null);
+                return temp.getData();
+            } else {
+                Node<E> temp = currNode.getNext();
+                currNode.setNext(currNode.getNext().getNext());
+                temp.setNext(null);
+                return temp.getData();
+            }
         }
     }
     
+     /**
+     * 
+     * add particular element at a specific index
+     */
     public void add(int index, E element) {
         if (index < 0 || index > size() - 1) {
             throw new NoSuchElementException();
@@ -154,6 +170,10 @@ public class MyLinkedList<E extends Comparable<E>>
         } 
     }
     
+     /**
+     * 
+     * adds at bottom 
+     */
     public void add(E element) {
         addTail(element);
     }
@@ -174,30 +194,29 @@ public class MyLinkedList<E extends Comparable<E>>
     }
     
     public void insertSorted(E element) {
-        Node<E> curNode = head;
-        int count = 0;
-        while(curNode.getData() < element){
-            curNode = curNode.getNext();
-            count++;
-            if (count == size) {
-                curNode.data = element;
-            }
+        Node<E> currNode = head;
+        int index = 0;
+        
+        while (currNode != null && currNode.getData().compareTo(element) < 0) {
+            currNode = currNode.getNext();
+            index++;
         }
-                
-        curNode.data = element;
+        add(index, element);
         } 
     
     public String toString() {
-        Node curNode = head; 
-        String result = "";
-
-        while (curNode.getNext() != null) {
-            result = result + curNode.getData() + " ";
-            curNode = curNode.getNext();
+        String contents = "";
+        
+        Node<E> currNode = head;
+        
+        while (currNode.getNext() != null)
+        {
+            contents += currNode.getData() + ", ";
+            currNode = currNode.getNext();
         }
-        result = result + curNode.getData();
-     
-        return result;
+        contents += currNode.getData();
+        
+        return contents;
     }
     
     
