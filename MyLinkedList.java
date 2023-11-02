@@ -105,9 +105,10 @@ public class MyLinkedList<E extends Comparable<E>>
      * get node at index
      */
     public E get(int index){
-        throw new NoSuchElementException(); 
+        if (index < 0 || index > size()-1) {
+            throw new NoSuchElementException();
         } else {
-            Node<E> curNode = head;
+             Node<E> curNode = head;
             
             for (int i = 0; i < index; i++) {
                 curNode = curNode.getNext();
