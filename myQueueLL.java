@@ -35,6 +35,9 @@ public class myQueueLL<E> {
 =======
     }
 
+<<<<<<< HEAD
+>>>>>>> ddc05978ec1c5abdf44298bff71ad8cd5f41cc3d
+=======
 >>>>>>> ddc05978ec1c5abdf44298bff71ad8cd5f41cc3d
     /*
      * shows if the queue is empty or not
@@ -77,7 +80,11 @@ public class myQueueLL<E> {
       
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
    
+=======
+}   
+>>>>>>> ddc05978ec1c5abdf44298bff71ad8cd5f41cc3d
 =======
 }   
 >>>>>>> ddc05978ec1c5abdf44298bff71ad8cd5f41cc3d
