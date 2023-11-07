@@ -1,69 +1,74 @@
-
+import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 
-class myQueueLL<E> {   
-      
+/*
+*
+* @author Anthony Yang
+*
+*/      
+public class myQueueLL<E> {     
     MyLinkedList<E> queue;  
-     
-    myQueueLL() {     
+
+    /**
+     * Constructor for objects of class MyQueueLL
+     */  
+    public myQueueLL() {     
         queue = new MyLinkedList<E>();
     }   
      
-    // insert an element into the queue  
+    /**
+     * Add element to the back of the queue
+     */  
     public void enqueue(E element)  {   
-        queue.addTail(element);    
-        return;   
+        queue.addTail(element); 
     }   
      
-    //remove an element from the queue  
+    //remove an element from front of queue  
     public E dequeue()  {   
-       
-        if (isEmpty()) {
-            throw new NoSuchElementException();  
-        } else {
-            E temp = queue.head.getData();
-            queue.removeHead();
-            return temp;
+        E temp = queue.getHead();
+    
+        queue.removeHead();
+        return temp;
         } 
         
-    }
-    
+    /*
+     * shows if the queue is empty or not
+     * 
+     * @return true if empty 
+     */
     public boolean isEmpty()
     {
-          if (queue.size == 0) {
-           return true; 
-        } else {
-            return false;
-        }
+        return queue.isEmpty();
     }
-    
+
+    /*
+     * returns the number of elements in the queue
+     * 
+     * @return  size of queue
+     */
     public int size() {
         return queue.size();
     }
     
-    public boolean isFull() {
-        return false;
-    }
-    
-    // print front of queue   
+     /*
+     * returns element at front of queue
+     * 
+     * @return  front of queue
+     */
     public E front()   
     {   
-        if (queue.size() == 0) {   
-            throw new NoSuchElementException();    
-        }   else { 
-            return queue.head.getData();   
-        }
+         return queue.getHead();
     } 
-    
-    public String toString() {
-        Node curNode = queue.head; 
-        String result = "";
 
-        for (int i = 0; i < queue.size(); i++) {
-            result = result + curNode.getData() + " ";
-            curNode = curNode.getNext();
+    /*
+     * Returns the queue from front to back
+     * 
+     * @return  toString
+     */
+    public String toString() {
+        return queue.toString();
         }
     
-        return result;
+      
     }
-}   
+   

@@ -8,9 +8,9 @@ import java.util.NoSuchElementException;
 public class MyLinkedList<E extends Comparable<E>>
 {
     //instance variables
-    private Node<E> head;
+    public Node<E> head;
     private int size;
-    private Node<E> tail;
+    public Node<E> tail;
 
     /**
      * Constructor for objects of class MyLinkedList
@@ -73,6 +73,7 @@ public class MyLinkedList<E extends Comparable<E>>
             }
 
             currentNode = newNode;
+            size++;
         }
     }
  
@@ -84,9 +85,9 @@ public class MyLinkedList<E extends Comparable<E>>
     public boolean isEmpty() {
         if (size != 0)
         {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 
@@ -105,15 +106,14 @@ public class MyLinkedList<E extends Comparable<E>>
      */
     public E get(int index){
         if (index < 0 || index > size()-1) {
-            Node<E> curNode = head;
+            throw new NoSuchElementException();
+        } else {
+             Node<E> curNode = head;
             
             for (int i = 0; i < index; i++) {
                 curNode = curNode.getNext();
             }
             return curNode.getData();
-            
-        } else {
-            throw new NoSuchElementException();
         }
     }
     
@@ -131,7 +131,7 @@ public class MyLinkedList<E extends Comparable<E>>
             Node<E> currNode = head;
             
             size--;
-            for (int i = 0; i<index-1; i++) {
+            for (int i = 0; i < index-1; i++) {
                 currNode = currNode.getNext();
             }
             if (index == size() - 1) {
@@ -146,6 +146,25 @@ public class MyLinkedList<E extends Comparable<E>>
                 return temp.getData();
             }
         }
+    }
+    
+    /**
+     * 
+     * going through the Linkelist finding where data = element
+     */
+    public E remove(E element) {
+        Node<E> currNode = head;
+        int index = 0;
+        
+        while (currNode != null && currNode.getData().compareTo(element) != 0) {
+            currNode = currNode.getNext();
+            index++;
+        }
+        if (currNode == null) {
+            return null;
+        }
+        size--;
+        return remove(index);
     }
     
      /**
@@ -202,6 +221,7 @@ public class MyLinkedList<E extends Comparable<E>>
             index++;
         }
         add(index, element);
+        size++;
         } 
     
     public String toString() {
@@ -217,7 +237,5 @@ public class MyLinkedList<E extends Comparable<E>>
         contents += currNode.getData();
         
         return contents;
-    }
-    
-    
+    }    
 }

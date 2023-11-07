@@ -18,7 +18,7 @@ public class testingLinkedList
         System.out.println(test.toString());
         test.addTail(20);
         System.out.println(test.toString());
-       
+        System.out.print(isEmpty());
        
     }
 }
