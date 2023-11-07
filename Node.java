@@ -31,4 +31,9 @@ public class Node<E>
     public void setNext(Node<E> newNext) {
         next = newNext;
     }
+
+    //sets data
+    public void setData(E newData) {
+        data = newData;
+    }
 }

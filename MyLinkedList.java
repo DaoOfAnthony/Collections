@@ -8,9 +8,15 @@ import java.util.NoSuchElementException;
 public class MyLinkedList<E extends Comparable<E>>
 {
     //instance variables
+<<<<<<< HEAD
     public Node<E> head;
     private int size;
     public Node<E> tail;
+=======
+    private Node<E> head;
+    private int size;
+    private Node<E> tail;
+>>>>>>> ddc05978ec1c5abdf44298bff71ad8cd5f41cc3d
 
     /**
      * Constructor for objects of class MyLinkedList
@@ -238,4 +244,8 @@ public class MyLinkedList<E extends Comparable<E>>
         
         return contents;
     }    
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ddc05978ec1c5abdf44298bff71ad8cd5f41cc3d
