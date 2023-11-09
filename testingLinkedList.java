@@ -13,10 +13,21 @@ public class testingLinkedList
      
         test.addHead(10);
         test.addHead(20);
-        System.out.println(test.toString());
         test.addTail(80);
-        test.add(2,-24);
-        test.add(3,42);
+        
+        MyLinkedList test2 = new MyLinkedList();
+        test2.add(0,-24);
+        test2.add(1,42);
+        System.out.println("yessir" + test2.toString());
+        
+        MyLinkedList test1 = new MyLinkedList();  
+        test1.insertSorted(20);
+        test1.insertSorted(10);
+        test1.insertSorted(40);
+        test1.insertSorted(30);
+        test1.get(2);
+        
+        
         test.removeHead();
         System.out.println(test.toString());
         test.addTail(20);
