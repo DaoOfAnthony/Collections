@@ -22,19 +22,19 @@ public class MyLinkedList<E extends Comparable<E>>
     
 
     //@param data stored in LinkedList
-    public void addHead(E data) {
-        if(head == null) { // empty list 
-            head = new Node<E>(data);
-            tail = head;
+    public void addHead(E element) {
+        Node<E> newNode = new Node<E>(element);
+        
+        if (head == null) { // deals with empty list
+            head = newNode;
+            tail = newNode;
             size++;
-        } else { // not empty list
-            Node<E> newNode = new Node<E>(data); 
+        } else {
             newNode.setNext(head);
-            newNode.getNext().setPrev(newNode);
+            newNode.getNext().setPrevious(newNode);
             head = newNode;
             size++;
         }
-        
     }
     
      /**
