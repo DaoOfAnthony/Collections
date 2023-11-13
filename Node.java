@@ -3,7 +3,7 @@
  * A helper class for MyLinkedList that stores a data element and a pointer to
  * the next node in the list
  *
- * @author Connor Jordan
+ * @author Anthony
  * @version V1
  */
 public class Node<E extends Comparable <E>>
