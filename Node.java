@@ -11,6 +11,7 @@ public class Node<E extends Comparable <E>>
     private E data;
     private Node<E> next;
     private Node<E> prev; 
+    
 
     /**
      * Constructor for objects of class Node

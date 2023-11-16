@@ -123,7 +123,7 @@ public class MyLinkedList<E extends Comparable<E>>
                 return removeNode.getData();
             } else {
                 removeNode.getPrev().setNext(removeNode.getNext());
-                removeNode.getNext().setPrev(removeNode.getPrev));
+                removeNode.getNext().setPrev(removeNode.getPrev());
                 removeNode.setNext(null);
                 removeNode.setPrev(null);
                 size--;
