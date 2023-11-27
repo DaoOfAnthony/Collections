@@ -12,6 +12,7 @@ public class  BinarySearchTree<E extends Comparable<E>>
     
     public BinarySearchTree() {
         root = null;
+        size = 0;
     }
     
     public void insert(E element){
@@ -19,7 +20,16 @@ public class  BinarySearchTree<E extends Comparable<E>>
             root = new BinarySearchTreeNode<E>(element);
         } else {
             root.insert(element);
-            size++; 
+            
+        }
+        size++;
+    }
+    
+    public E search(E element) {
+        if (isEmpty()) {
+            return null;
+        } else {
+            return root.search(element);
         }
     }
     
@@ -35,7 +45,7 @@ public class  BinarySearchTree<E extends Comparable<E>>
         }
     }
     
-    public E search(E element) {
+    public E searchE(E element) {
         if (root == null) {
             return null;
         } else {
@@ -45,27 +55,30 @@ public class  BinarySearchTree<E extends Comparable<E>>
     }
     
     public E getMin() {
-        if (root == null) {
+        if (isEmpty()) {
             return null;
         } else {
-            search(
+            return getMin();
         }
     }
     
-    public E getMax() {
-        if(root == null) {
+     public E getMax() {
+        if (size == 0) {
             return null;
         } else {
-            int max = root.data;
-            int left = findMax(root.left);
-            int right = findMax(root.right);
- 
-            if (left > cur) {
-                max = left;
-            } else if (right > cur) {
-                max = right;
-                return cur;
-            }   
+            return getMax();
         }
+    }
+    
+    public int getDepth() {
+        if (isEmpty()) {
+            return 0;
+        } else {
+            return root.getDepth();
+        }
+    }
+    
+    public String toString() {
+        return toString();
     }
 }
