@@ -268,4 +268,8 @@ public class MyLinkedList<E extends Comparable<E>>
         }
         return contents;
     }   
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3909457dd97ae0b2b74150b3fd7330fdfdf7ba1a
