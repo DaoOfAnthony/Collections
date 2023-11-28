@@ -130,7 +130,56 @@ public class BinarySearchTreeNode<E extends Comparable <E>>
         return result;
     }
     
-    public E remove(E element) {
-        
+      public BinarySearchTreeNode<E> removeMin() { // assume tree has values
+        if(left == null) {
+            data = null;
+            return null;
+        } else {
+            left = left.removeMin();
+            return this;
+        }
+    }
+    
+    public BinarySearchTreeNode<E> removeMax() { // assume tree has values
+        if(right == null) {
+            data = null;
+            return null;
+        } else {
+            right = right.removeMin();
+            return this;
+        }
+    }
+    
+     public BinarySearchTreeNode remove(E element) { // assume element is in array
+         if (element.compareTo(data) > 0) { // element could be a non int, use compare to
+            if (right == null) {
+                return this;
+            } else {
+                right = right.remove(element);
+                return this;
+            }
+        } else if (element.compareTo(data) < 0) {
+            if (left == null) {
+                return this;
+            } else {
+                left = left.remove(element);
+                return this;
+            }
+        } else {
+            if (left == null && right == null) {
+                data = null;
+                return null;
+            } else if (right == null) {
+                data = null;
+                return left;
+            } else if (left == null) {
+                data = null;
+                return right;
+            } else {
+                data = left.getMax();
+                left.removeMax();
+                return this;
+            }
+        }
     }
 }

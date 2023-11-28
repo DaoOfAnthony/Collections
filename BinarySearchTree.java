@@ -79,6 +79,50 @@ public class  BinarySearchTree<E extends Comparable<E>>
     }
     
     public String toString() {
-        return toString();
+        if (isEmpty()) {
+            return "";
+        } else {
+            return root.toString();
+        }
+    }
+    
+        /**
+     * Removes and returns the minimum element
+     * 
+     * @return the minimum element in the tree
+     */
+    public E removeMin() {
+        if(isEmpty()) {
+            return null;
+        } else {
+            E returned = root.getMin();
+            root.removeMin();
+            return returned;
+        }
+    }
+    
+    /**
+     * Removes and returns the maximim element
+     * 
+     * @return the maximum element in the tree
+     */
+    public E removeMax() {
+        if(isEmpty()) {
+            return null;
+        } else {
+            E returned = root.getMax();
+            root.removeMax();
+            return returned;
+        }
+    }
+    
+    public E remove(E element) {
+        if (search(element) == null) {
+            return null;
+        } else {
+            root = root.remove(element);
+            size--;
+            return element;
+        }
     }
 }
