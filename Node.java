@@ -53,6 +53,9 @@ public class Node<E extends Comparable <E>>
         next = newNext;
     }
     
+     /**
+     * get prev node  
+     */
     public Node<E> getPrev() {
         return prev;
     }

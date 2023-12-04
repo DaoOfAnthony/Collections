@@ -1,30 +1,44 @@
 
 /**
- * Write a description of class BinarySearchTree here.
+ * Implementation of Binary Search Tree
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Anthony
+ * @version V1
  */
 public class  BinarySearchTree<E extends Comparable<E>>
 {
     private BinarySearchTreeNode<E> root; 
     private int size;
     
+      /**
+     * Constructor for class BinarySearchTree
+     */
     public BinarySearchTree() {
         root = null;
         size = 0;
     }
     
+    /**
+     * Inserts element into the binary search tree
+     *
+     * @param  element that's being inserted
+    */
     public void insert(E element){
         if(root == null) {
             root = new BinarySearchTreeNode<E>(element);
         } else {
             root.insert(element);
-            
         }
         size++;
     }
     
+     /**
+     * searching through tree till match found then return
+     * 
+     * @param element that's being searched/matched
+     * 
+     * @return matching element
+     */
     public E search(E element) {
         if (isEmpty()) {
             return null;
@@ -33,10 +47,20 @@ public class  BinarySearchTree<E extends Comparable<E>>
         }
     }
     
+     /**
+     * Returns the number of elements in the binary search tree
+     * 
+     * @return the size of the binary search tree
+     */
     public int size() {
         return size;
     }
     
+     /**
+     * Returns true if BST empty, false if not 
+     * 
+     * @return false/true 
+     */
     public boolean isEmpty() {
         if (size != 0) {
             return false;
@@ -45,15 +69,11 @@ public class  BinarySearchTree<E extends Comparable<E>>
         }
     }
     
-    public E searchE(E element) {
-        if (root == null) {
-            return null;
-        } else {
-            search(element);
-        }
-        return element;
-    }
-    
+      /**
+     * Returns the minimum element in the binary serch tree
+     * 
+     * @return min element in the BST
+     */
     public E getMin() {
         if (isEmpty()) {
             return null;
@@ -62,6 +82,11 @@ public class  BinarySearchTree<E extends Comparable<E>>
         }
     }
     
+    /**
+     * Return the maximun element in the binary search tree
+     * 
+     * @return max element in the BST
+     */
      public E getMax() {
         if (size == 0) {
             return null;
@@ -70,6 +95,11 @@ public class  BinarySearchTree<E extends Comparable<E>>
         }
     }
     
+    /**
+     * Returns the number of levels in the BSt
+     * 
+     * @return the # of levels in the tree
+     */
     public int getDepth() {
         if (isEmpty()) {
             return 0;
@@ -78,6 +108,11 @@ public class  BinarySearchTree<E extends Comparable<E>>
         }
     }
     
+    /**
+    * Prints all of the elements in order smallest to largest
+    * 
+    * @return  a string of all the elements(smallest - largest)
+    */
     public String toString() {
         if (isEmpty()) {
             return "";
@@ -86,7 +121,7 @@ public class  BinarySearchTree<E extends Comparable<E>>
         }
     }
     
-        /**
+    /**
      * Removes and returns the minimum element
      * 
      * @return the minimum element in the tree
@@ -116,6 +151,13 @@ public class  BinarySearchTree<E extends Comparable<E>>
         }
     }
     
+     /**
+     * Removes element and returns the matched result
+     * 
+     * @param  element being removed
+     * 
+     * @return element matched
+     */
     public E remove(E element) {
         if (search(element) == null) {
             return null;

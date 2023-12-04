@@ -49,42 +49,7 @@ public class BinarySearchTreeNode<E extends Comparable <E>>
         return left = newLeft;
     }
     
-    public void insert(E element) {
-        if (element.compareTo(data) < 0){
-            if (left == null){
-                left = new BinarySearchTreeNode(element); 
-                
-            } else {
-                left.insert(element);
-            }
-        } else {
-            if (right == null) {
-                right = new BinarySearchTreeNode(element); 
-            } else {
-                right.insert(element);
-            }
-        }
-    }
-    
-    public E search(E element) {
-        if (data.compareTo(element) == 0) {
-            return element;
-        } else if (element.compareTo(this.data) < 0) {
-            if (left == null) {
-                return null;
-            } else {
-                return left.search(element);
-            }
-        } else {
-            if (right == null) {
-                return null;
-            } else {
-                return right.search(element);
-            }
-        }
-    }
-    
-    public E getMin() {
+     public E getMin() {
         if(left == null) {
             return data;
         } else {
@@ -100,14 +65,49 @@ public class BinarySearchTreeNode<E extends Comparable <E>>
         }
     }
     
-    public int getDepth() {
+     public void insert(E element) {
+        if (data.compareTo(element ) > 0) { // left
+            if (left == null) {
+                left = new BinarySearchTreeNode<E>(element);
+            } else {
+                left.insert(element);
+            }
+        } else { // right
+            if (right == null) {
+                right = new BinarySearchTreeNode<E>(element);
+            } else {
+                right.insert(element);
+            }
+        }
+    }
+    
+    public E search(E element) {
+        if (element.compareTo(data) < 0) {
+            if (left == null) {
+                return null;
+            } else {
+                return left.search(element);
+            }
+        } else if (element.compareTo(data) > 0) {
+            if (right == null) {
+                return null;
+            } else {
+                return right.search(element);
+            }
+        } else {
+            return data;
+        }
+    }
+    
+     public int getDepth() {
         if(left  == null && right == null) {
-            return 0; 
+            return 0;
         } else if (left == null) {
             return right.getDepth() + 1;
         } else if (right == null) {
             return left.getDepth() + 1;
-        } else {
+        }
+        else {
             if (left.getDepth() >= right.getDepth()) {
                 return left.getDepth() + 1;
             } else {
@@ -116,21 +116,7 @@ public class BinarySearchTreeNode<E extends Comparable <E>>
         }
     }
     
-    public String toString() {
-        String result = "";
-        
-        if (left != null) {
-            result = left.toString() + ", ";
-        } 
-        result = result + data.toString();
-        
-        if (right != null) {
-            result = result + ", " + right.toString();
-        }
-        return result;
-    }
-    
-      public BinarySearchTreeNode<E> removeMin() { // assume tree has values
+    public BinarySearchTreeNode<E> removeMin() { 
         if(left == null) {
             data = null;
             return null;
@@ -151,22 +137,23 @@ public class BinarySearchTreeNode<E extends Comparable <E>>
     }
     
      public BinarySearchTreeNode remove(E element) { // assume element is in array
-         if (element.compareTo(data) > 0) { // element could be a non int, use compare to
-            if (right == null) {
-                return this;
-            } else {
-                right = right.remove(element);
-                return this;
-            }
-        } else if (element.compareTo(data) < 0) {
+         
+        if (element.compareTo(data) < 0) { 
             if (left == null) {
                 return this;
             } else {
                 left = left.remove(element);
                 return this;
             }
-        } else {
-            if (left == null && right == null) {
+        } else if (element.compareTo(data) > 0) { 
+            if (right == null) {
+                return this;
+            } else {
+                right = right.remove(element);
+                return this;
+            }
+        } else { // match
+            if (left == null && right == null) { 
                 data = null;
                 return null;
             } else if (right == null) {
@@ -181,6 +168,20 @@ public class BinarySearchTreeNode<E extends Comparable <E>>
                 return this;
             }
         }
-        //eeeeeeeee
+    }
+    
+     public String toString() {
+        String returned = "";
+        
+        if (left != null) {
+            returned = left.toString() + ", ";
+        } 
+        
+        returned = returned + data.toString();
+        
+        if (right != null) {
+            returned = returned + ", " + right.toString();
+        }
+        return returned;
     }
 }
