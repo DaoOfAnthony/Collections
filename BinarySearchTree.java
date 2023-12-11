@@ -1,4 +1,3 @@
-
 /**
  * Implementation of Binary Search Tree
  *
@@ -23,8 +22,8 @@ public class  BinarySearchTree<E extends Comparable<E>>
      *
      * @param  element that's being inserted
     */
-    public void insert(E element){
-        if(root == null) {
+    public void insert(E element) {
+        if (isEmpty()) {
             root = new BinarySearchTreeNode<E>(element);
         } else {
             root.insert(element);
@@ -78,7 +77,7 @@ public class  BinarySearchTree<E extends Comparable<E>>
         if (isEmpty()) {
             return null;
         } else {
-            return getMin();
+            return root.getMin();
         }
     }
     
@@ -87,11 +86,11 @@ public class  BinarySearchTree<E extends Comparable<E>>
      * 
      * @return max element in the BST
      */
-     public E getMax() {
-        if (size == 0) {
+    public E getMax() {
+        if (isEmpty()) {
             return null;
         } else {
-            return getMax();
+            return root.getMax();
         }
     }
     
@@ -109,30 +108,15 @@ public class  BinarySearchTree<E extends Comparable<E>>
     }
     
     /**
-    * Prints all of the elements in order smallest to largest
-    * 
-    * @return  a string of all the elements(smallest - largest)
-    */
-    public String toString() {
-        if (isEmpty()) {
-            return "";
-        } else {
-            return root.toString();
-        }
-    }
-    
-    /**
      * Removes and returns the minimum element
      * 
      * @return the minimum element in the tree
      */
     public E removeMin() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             return null;
         } else {
-            E returned = root.getMin();
-            root.removeMin();
-            return returned;
+            return remove(getMin());
         }
     }
     
@@ -142,12 +126,10 @@ public class  BinarySearchTree<E extends Comparable<E>>
      * @return the maximum element in the tree
      */
     public E removeMax() {
-        if(isEmpty()) {
+        if (isEmpty()) {
             return null;
         } else {
-            E returned = root.getMax();
-            root.removeMax();
-            return returned;
+            return remove(getMax());
         }
     }
     
@@ -159,7 +141,9 @@ public class  BinarySearchTree<E extends Comparable<E>>
      * @return element matched
      */
     public E remove(E element) {
-        if (search(element) == null) {
+        if (isEmpty()) { // empty
+            return null;
+        } else if (search(element) == null) { 
             return null;
         } else {
             root = root.remove(element);
@@ -167,4 +151,26 @@ public class  BinarySearchTree<E extends Comparable<E>>
             return element;
         }
     }
+    
+    /**
+     * Prints all of the elements in order smallest to largest
+     * 
+     * @return  a string of all the elements(smallest - largest)
+     */
+     public String toString() {
+         if (isEmpty()) {
+             return "";
+         } else {
+             return root.toString();
+         }
+     }
+     
+     /**
+      * Mehtod given by teahcer
+      */
+     public void printTree(int i) {
+         if (!isEmpty()) {
+             root.printTree(i);
+         }
+     }
 }
